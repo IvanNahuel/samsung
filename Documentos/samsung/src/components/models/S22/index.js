@@ -1,0 +1,1 @@
+export { S22 } from "./S22";
