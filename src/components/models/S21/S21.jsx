@@ -29,6 +29,7 @@ export const S21 = () => {
     const orbitControls = new OrbitControls(camera, renderer.domElement);
     orbitControls.enableDamping = true;
     orbitControls.enableZoom = false;
+    orbitControls.enableRotate= false;
 
     //Resize canvas
     const resize = () => {

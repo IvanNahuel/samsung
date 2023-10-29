@@ -1,3 +1,21 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.title-phone-transition{
+    transition: 3s;
+}
+
+@keyframes move-down {
+    0% {
+        bottom: 200px;
+        opacity: 0;
+    }
+    70%{
+        opacity: 0;
+    }
+    100% {
+        bottom: 125px;
+        opacity: 1;
+    }
+  }

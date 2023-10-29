@@ -6,10 +6,10 @@ export const SDescription = ({
 }) => {
   return (
     <div
-      className="flex flex-col space-y-4 absolute bottom-52"
-      style={{ transition: "5s" }}
+      className="flex flex-col space-y-4 absolute bottom-[125px]"
+      style={{ transition: "1s", animation: 'move-down 1s' }}
     >
-      <div>{title}</div>
+      <div className="self-center">{title}</div>
       <div>{storage}</div>
       <div>{ram}</div>
       <div>{mpx}</div>
