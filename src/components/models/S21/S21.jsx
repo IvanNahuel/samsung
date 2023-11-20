@@ -31,6 +31,10 @@ export const S21 = () => {
     orbitControls.enableZoom = false;
     orbitControls.enableRotate= false;
 
+    //raycaster
+    const raycaster = new THREE.Raycaster();
+    const mouse = new THREE.Vector2();
+
     //Resize canvas
     const resize = () => {
       renderer.setSize(currentRef.clientWidth, currentRef.clientHeight);
@@ -49,6 +53,22 @@ export const S21 = () => {
       model.rotation.set(0, 3.9, 0);
       scene.add(model);
     });
+
+    //Raycasting method
+    const onDocumentMouseMove = (event) => {
+      mouse.x = (event.clientX / currentRef.clientWidth) * 2 - 1;
+      mouse.y = -(event.clientY / currentRef.clientHeight) * 2 + 1;
+    
+      raycaster.setFromCamera(mouse, camera);
+    
+      const intersects = raycaster.intersectObjects(scene.children, true);
+    
+      if (intersects.length > 0) {
+        console.log('Mouse sobre un objeto 3D');
+      }
+    };
+
+    document.addEventListener('mousemove', onDocumentMouseMove, false);
 
     //Lights
     const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
@@ -80,6 +100,7 @@ export const S21 = () => {
 
     return () => {
       window.removeEventListener("resize", resize);
+      document.removeEventListener('mousemove', onDocumentMouseMove, false);
       currentRef.removeChild(renderer.domElement);
     };
   }, []);
